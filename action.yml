@@ -1,0 +1,10 @@
+name: 'Docker::Build'
+description: 'Build and push Docker image for Github Docker Registry'
+outputs:
+  tag:
+    description: 'Is the tag, which was pushed'
+  digest:
+    description: 'Is the digest of the image, which was pushed'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
