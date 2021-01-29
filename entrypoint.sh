@@ -22,3 +22,5 @@ function main() {
 
   docker logout ${DOCKER_REGISTRY}
 }
+
+main
