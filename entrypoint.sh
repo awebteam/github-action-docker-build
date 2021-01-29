@@ -9,10 +9,12 @@ function main() {
     IMAGE_TAG=$(echo ${GITHUB_REF} | sed -e "s/refs\/heads\///g" | sed -e "s/\//-/g")
   fi;
 
+  DOCKER_REGISTRY=docker.pkg.github.com
+
   echo "Github Actor: ${GITHUB_ACTOR}"
   echo ${GITHUB_TOKEN} | docker login -u ${GITHUB_ACTOR} --password-stdin ${DOCKER_REGISTRY}
 
-  DOCKER_IMAGE_NAME=docker.pkg.github.com/${GITHUB_REPOSITORY}:${IMAGE_TAG}
+  DOCKER_IMAGE_NAME=${DOCKER_REGISTRY}/${GITHUB_REPOSITORY}:${IMAGE_TAG}
 
   docker build --build-arg GITHUB_TOKEN -t ${DOCKER_IMAGE_NAME} .
   docker push ${DOCKER_IMAGE_NAME}
