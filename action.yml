@@ -1,5 +1,9 @@
 name: 'Docker::Build'
 description: 'Build and push Docker image for Github Docker Registry'
+inputs:
+  name:
+    description: 'The name of the docker image'
+    required: true
 outputs:
   tag:
     description: 'Is the tag, which was pushed'
